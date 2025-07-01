@@ -6,7 +6,6 @@ from opendbc.car.interfaces import RadarInterfaceBase
 from opendbc.car.hyundai.values import DBC
 
 from opendbc.sunnypilot.car.hyundai.radar_interface_ext import RadarInterfaceExt
-from opendbc.sunnypilot.car.hyundai.values import HyundaiFlagsSP
 
 RADAR_START_ADDR = 0x500
 RADAR_MSG_COUNT = 32
