@@ -151,6 +151,14 @@ class HyundaiFlags(IntFlag):
   ALT_LIMITS_2 = 2 ** 26
 
   CCNC = 2 ** 27
+  MRREVO14F_RADAR = 2 ** 28
+
+
+class Footnote(Enum):
+  CANFD = CarFootnote(
+    "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using " +
+    "comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
+    Column.MODEL)
 
 
 @dataclass
@@ -172,6 +180,9 @@ class HyundaiPlatformConfig(PlatformConfig):
   def init(self):
     if self.flags & HyundaiFlags.MANDO_RADAR:
       self.dbc_dict = {Bus.pt: "hyundai_kia_generic", Bus.radar: 'hyundai_kia_mando_front_radar_generated'}
+
+    if self.flags & HyundaiFlags.MRREVO14F_RADAR:
+      self.dbc_dict = {Bus.pt: "hyundai_kia_generic", Bus.radar: 'hyundai_mrrevo14f_radar_generated'}
 
     if self.flags & HyundaiFlags.MIN_STEER_32_MPH:
       self.specs = self.specs.override(minSteerSpeed=32 * CV.MPH_TO_MS)
@@ -306,7 +317,7 @@ class CAR(Platforms):
   HYUNDAI_KONA_EV_2022 = HyundaiPlatformConfig(
     [HyundaiCarDocs("Hyundai Kona Electric 2022-23", car_parts=CarParts.common([CarHarness.hyundai_o]))],
     CarSpecs(mass=1743, wheelbase=2.6, steerRatio=13.42, tireStiffnessFactor=0.385),
-    flags=HyundaiFlags.CAMERA_SCC | HyundaiFlags.EV | HyundaiFlags.ALT_LIMITS,
+    flags=HyundaiFlags.CAMERA_SCC | HyundaiFlags.EV | HyundaiFlags.ALT_LIMITS | HyundaiFlags.MRREVO14F_RADAR,
   )
   HYUNDAI_KONA_EV_2ND_GEN = HyundaiCanFDPlatformConfig(
     [
