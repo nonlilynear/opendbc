@@ -113,7 +113,7 @@ def _initialize_coop_steering(CP: structs.CarParams, CP_SP: structs.CarParamsSP,
       CP_SP.flags |= TeslaFlagsSP.COOP_STEERING.value
 
 
-def _initialize_radar(CI: CarInterfaceBase, CP: structs.CarParams, CP_SP: structs.CarParamsSP, params_dict: dict[str, str]) -> None:
+def _initialize_radar(CI: CarInterfaceBaseSP, CP: structs.CarParams, CP_SP: structs.CarParamsSP, params_dict: dict[str, str]) -> None:
 
   # Hyundai Radar
   if CP.brand == 'hyundai':
