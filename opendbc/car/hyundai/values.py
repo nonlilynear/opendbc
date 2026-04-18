@@ -1,11 +1,11 @@
 import re
 from dataclasses import dataclass, field
-from enum import IntFlag
+from enum import Enum, IntFlag
 
 from opendbc.car import Bus, CarSpecs, DbcDict, PlatformConfig, Platforms, uds
 from opendbc.car.common.conversions import Conversions as CV
 from opendbc.car.structs import CarParams
-from opendbc.car.docs_definitions import CarHarness, CarDocs, CarParts, SupportType
+from opendbc.car.docs_definitions import CarFootnote, CarHarness, CarDocs, CarParts, Column, SupportType
 from opendbc.car.fw_query_definitions import FwQueryConfig, Request, p16
 
 from opendbc.sunnypilot.car.hyundai.values import HyundaiFlagsSP
